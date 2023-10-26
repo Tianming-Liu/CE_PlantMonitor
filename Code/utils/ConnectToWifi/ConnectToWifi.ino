@@ -1,7 +1,8 @@
 #include <ESP8266WiFi.h>
+#include <passwords.h>
 
-const char* ssid     = "CE-Hub-Student";
-const char* password = "casa-ce-gagarin-public-service";
+const char* ssid     = SECRET_SSID;
+const char* password = SECRET_PASS;
 const char* host = "iot.io";
 
 void setup() {
