@@ -33,27 +33,36 @@ void loop() {
     return;
   }
 
-  // for clear print different value in serial monitor
-
-  // print humidity and change line
-  Serial.print("Humidity: ");
+  // for serial plotter we need to add clear seperation between different data, such as ","
   Serial.print(h);
-  Serial.println("%");
-  
-  // print Celsius Temperature
-  Serial.print("Celsius Temperature: ");
+  Serial.print("%, ");
+  // set a delay for serial plotter to process the data, otherwise it could misunderstand seperate data 
+  delay(100);
   Serial.print(t);
-  Serial.print("°C  ");
+  Serial.println("°C;");
+  delay(100);
+
+  // // for clear print different value in serial monitor
+
+  // // print humidity and change line
+  // Serial.print("Humidity: ");
+  // Serial.print(h);
+  // Serial.println("%");
   
-  // print Fahrenheit Temperature and change line
-  Serial.print("Fahrenheit Temperature: ");
-  Serial.print(f);
-  Serial.println("°F");
+  // // print Celsius Temperature
+  // Serial.print("Celsius Temperature: ");
+  // Serial.print(t);
+  // Serial.print("°C  ");
   
-  // print heat index (real feel temperature) in Celsius
-  Serial.print("Celsius Heat Index: ");
-  Serial.print(dht.computeHeatIndex(t,h,false));
-  Serial.print("°C  ");
+  // // print Fahrenheit Temperature and change line
+  // Serial.print("Fahrenheit Temperature: ");
+  // Serial.print(f);
+  // Serial.println("°F");
+  
+  // // print heat index (real feel temperature) in Celsius
+  // Serial.print("Celsius Heat Index: ");
+  // Serial.print(dht.computeHeatIndex(t,h,false));
+  // Serial.print("°C  ");
 
   delay(1000);
 }
