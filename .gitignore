@@ -1,4 +1,5 @@
-/Code/utils/ConnectToWifi/passwords.h
-/Code/utils/GetTheTime/passwords.h
-/Code/utils/MQTT/passwords.h
+/Code/Test/ConnectToWifi/passwords.h
+/Code/Test/GetTheTime/passwords.h
+/Code/Test/MQTT/passwords.h
+/Code/Demo/passwords.h
 .DS_Store
