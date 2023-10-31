@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MQTT Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/mqtt@4.3.7/dist/mqtt.min.js"></script>
+</head>
+<body>
+    <h1>MQTT Data Visualization</h1>
+    <div id="mqttDataChartContainer">
+        <canvas id="mqttDataChart" width="800" height="400"></canvas>
+    </div>
+
+    <script>
+        const mqttBroker = 'ws://mqtt.cetools.org:8080'; // MQTT broker address
+        const topics = ['student/CASA0014/plant/ucfntl0/moisture', 'student/CASA0014/plant/ucfntl0/temperature', 'student/CASA0014/plant/ucfntl0/humidity']; // MQTT topics
+        const client = mqtt.connect(mqttBroker);
+
+        // Initialize arrays for each dataset
+        const datasets = topics.map(topic => {
+            return {
+                label: topic,
+                data: [],
+                borderColor: getRandomColor(),
+                fill: false
+            };
+        });
+
+        const ctx = document.getElementById('mqttDataChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: datasets
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'second'
+                        }
+                    }
+                }
+            }
+        });
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        client.on('connect', onConnect);
+
+        function onMessageArrived(topic, message) {
+            const timestamp = new Date();
+            const value = parseFloat(message.toString());
+
+            chart.data.labels.push(timestamp);
+
+            // Update each dataset based on the topic
+            datasets.forEach((dataset, index) => {
+                if (topic === topics[index]) {
+                    dataset.data.push(value);
+                }
+            });
+
+            const maxDataPoints = 50;
+            if (chart.data.labels.length > maxDataPoints) {
+                chart.data.labels.shift();
+                datasets.forEach(dataset => dataset.data.shift());
+            }
+
+            chart.update();
+        }
+
+        function onConnect() {
+            console.log('Connected to MQTT broker');
+            // Subscribe to all three MQTT topics
+            topics.forEach(topic => {
+                client.subscribe(topic, function(err) {
+                    if (!err) {
+                        console.log('Subscribed to ' + topic);
+                    }
+                });
+            });
+
+            client.on('message', function(topic, message) {
+                onMessageArrived(topic, message);
+            });
+        }
+    </script>
+</body>
+</html>

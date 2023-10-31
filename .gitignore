@@ -1,5 +1,6 @@
 /Code/Test/ConnectToWifi/passwords.h
 /Code/Test/GetTheTime/passwords.h
 /Code/Test/MQTT/passwords.h
+/WebSite/js/mqtt-config.js
 /Code/Demo/passwords.h
 .DS_Store
