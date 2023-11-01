@@ -127,11 +127,15 @@ The password is set up behind the username.
 </center>
 
 - Data In InfluxDB Dashboard
-
-
+<center>
+  <img src="./Links/InfluxDB_Output.png" alt="DHT22 Temp-Humidity Sensor" width="400">
+</center>
 
 - Data Visualization in Grafana Dashboard
 
+<center>
+  <img src="./Links/Grafana_Output.png" alt="DHT22 Temp-Humidity Sensor" width="400">
+</center>
 
 
 ## Future
@@ -146,7 +150,17 @@ Collect and visualize the data on the same website. Analyse the former status of
   <img src="./Links/Web Interaction.png" alt="DHT22 Temp-Humidity Sensor" width="300">
 </center>
 
-### 2. Parametric model for 3d Enclosure
+### 2. Change the Watering Method with automatic control
+
+Switching from top watering to bottom watering and adding an automatic control module that allows people to operate it from the website above. 
+
+Bottom watering can prevent the topsoil from becoming too compact, allowing water to flow smoothly and avoiding waterlogging, which can attract many mosquitoes.
+
+<center>
+  <img src="./Links/Watering Method.jpeg" alt="Bottom Watering" width="300">
+</center>
+
+### 3. Parametric model for 3d Enclosure
 
 Estabilish a parameteric model that fits various pot sizes. With combination of 3D printing tech, we can finish the 3D enclosure models quickly.
 
