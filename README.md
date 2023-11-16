@@ -6,6 +6,12 @@ In this lesson, i build up an internet connected sensing installation. It will m
   <img src="./Links/OverallPhoto.jpg" alt="Overall Photo of Website and Plant Monitor" width="400">
 </center>
 
+The latest version with watering function. When the moisture is lower than certain number, the Red LED will be lighten up. You can press the button to watering the plant with the green led light at the same time.
+
+<center>
+  <img src="./Links/update.gif" alt="Overall Photo of Website and Plant Monitor" width="400">
+</center>
+
 ## Parts List 😀
 ### 1. Microcontroller
 **1.1 Arduino Uno**
